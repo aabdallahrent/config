@@ -1,0 +1,25 @@
+#!/Users/mneumark/.rubies/ruby-2.1.3/bin/ruby
+
+def main
+  file_path = ARGV[0]
+  root_dir = ARGV[1]
+  #dputs("#{file_path}, #{root_dir}")
+  if spec?(file_path)
+    puts file_path
+  else
+    relative_path = (File.dirname(file_path) || '').sub(root_dir, '').sub(%r{/app/}, '')
+    spec_path = "#{root_dir}/spec/#{relative_path}/#{spec_file_from_file(File.basename(file_path))}"
+    puts spec_path
+  end
+end
+
+def spec_file_from_file(filename)
+  base, extension = filename.split('.')
+  "#{base}_spec.#{extension}"
+end
+
+def spec?(file_path)
+  !! %r{_spec\.rb$}.match(file_path)
+end
+
+main

@@ -1,0 +1,11 @@
+#!/bin/bash
+source $HOME/.bash_profile;
+
+order=''
+if [ $3 == 'ordered' ]; then
+  order=' --order=defined'
+  echo "********** TESTING IN DEFINED ORDER **********"
+fi
+
+spec=`$HOME/Scripts/spec-for-file $1 $2`;
+bundle exec rspec $spec$order;
