@@ -4,6 +4,7 @@ alias cds="cd ~/source"
 alias cdr="cd ~/source/rent"
 alias cdi="cd ~/source/idg"
 alias cda="cd ~/source/ag"
+alias cdm="cd ~/source/metasaurus"
 
 alias rspec-ordered='bundle exec rspec --order=defined'
 
