@@ -1,0 +1,22 @@
+#!/bin/bash
+source $HOME/.bash_profile;
+
+order=''
+if [ "$#" -ge 3 ] && [ $3 == 'ordered' ]; then
+  order=' --order=defined'
+  echo "********** TESTING IN DEFINED ORDER **********"
+fi
+
+no_vcr=''
+if [ "$#" -ge 4 ] && [ $4 == 'novcr' ]; then
+  export NO_VCR=1
+fi
+
+if [ "$#" -lt 1 ] || [ $1 == "global" ]; then
+  echo "********** GLOBAL RSPEC **********"
+  spec=""
+else
+  spec=`spec-for-file $1 $2`;
+fi
+
+bundle exec rspec $spec$order;

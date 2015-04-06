@@ -1,0 +1,5 @@
+{
+  "working_dir": "$project_path",
+  "cmd": "/Users/mneumark/bin/rspec-file global",
+  "shell": "/bin/bash"
+}

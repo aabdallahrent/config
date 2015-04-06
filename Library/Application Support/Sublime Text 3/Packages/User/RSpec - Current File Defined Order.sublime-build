@@ -1,0 +1,5 @@
+{
+  "working_dir": "$project_path",
+  "cmd": "/Users/mneumark/bin/rspec-file $file $project_path ordered vcr",
+  "shell": "/bin/bash"
+}

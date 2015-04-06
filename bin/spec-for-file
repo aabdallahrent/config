@@ -1,4 +1,4 @@
-#!/Users/mneumark/.rubies/ruby-2.1.3/bin/ruby
+#!/usr/bin/env ruby
 
 def main
   file_path = ARGV[0]
