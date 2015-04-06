@@ -1,0 +1,40 @@
+{
+  "folders":
+  [
+    {
+      "path": "/Users/mneumark/source/rent"
+    }
+  ],
+  "build_systems":
+  [
+    {
+      "name": "RSpec: Global",
+      "working_dir": "/Users/mneumark/source/rent",
+      "shell_cmd": "bundle exec rspec"
+    },
+    {
+      "name": "RSpec: Current File Defined Order",
+      "working_dir": "/Users/mneumark/source/rent",
+      "cmd": "/Users/mneumark/Scripts/rspec-file $file $project_path ordered vcr",
+      "shell": "/bin/bash"
+    },
+    {
+      "name": "RSpec: Current File Defined Order, No VCR",
+      "working_dir": "/Users/mneumark/source/rent",
+      "cmd": "/Users/mneumark/Scripts/rspec-file $file $project_path ordered novcr",
+      "shell": "/bin/bash"
+    },
+    {
+      "name": "RSpec: Current File",
+      "working_dir": "/Users/mneumark/source/rent",
+      "cmd": "/Users/mneumark/Scripts/rspec-file $file $project_path random vcr",
+      "shell": "/bin/bash"
+    },
+    {
+      "name": "RSpec: Current File, No VCR",
+      "working_dir": "/Users/mneumark/source/rent",
+      "cmd": "/Users/mneumark/Scripts/rspec-file $file $project_path random novcr",
+      "shell": "/bin/bash"
+    }
+  ]
+}
