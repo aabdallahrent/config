@@ -7,9 +7,11 @@ def main
   if spec?(file_path)
     puts file_path
   else
-    relative_path = (File.dirname(file_path) || '').sub(root_dir, '').sub(%r{/app/}, '')
-    spec_path = "#{root_dir}/spec/#{relative_path}/#{spec_file_from_file(File.basename(file_path))}"
-    puts spec_path
+    puts spec_path(
+      root_dir: root_dir,
+      relative_path: relative_path(file_path, root_dir),
+      spec_file: spec_file_from_file(File.basename(file_path))
+    )
   end
 end
 
@@ -20,6 +22,23 @@ end
 
 def spec?(file_path)
   !! %r{_spec\.rb$}.match(file_path)
+end
+
+def relative_path(file_path, root_dir)
+  relative_path = (File.dirname(file_path) || '').sub(root_dir, '').sub(%r{/app/?}, '').sub(%r{/lib/?}, '')
+  relative_path == '' ? '' : "#{relative_path}/"
+end
+
+def spec_path(root_dir:, relative_path:, spec_file:)
+  spec_path = "#{root_dir}/spec/#{relative_path}#{spec_file}"
+  if File.exists?(spec_path)
+    spec_path
+  else
+    app_name = File.basename(root_dir)
+    spec_path = "#{root_dir}/spec/#{app_name}/#{relative_path}#{spec_file}"
+    spec_path if File.exists?(spec_path)
+  end
+      
 end
 
 main

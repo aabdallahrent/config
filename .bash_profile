@@ -29,12 +29,19 @@ export DEFAULT_COLOR="\[\033[0m\]"
 
 # git branch in prompt
 function parse_git_branch {
-    export branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`;
+    new_branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`;
+
+    if [ "$new_branch" == "$branch" ]; then
+        export branch=$new_branch;
+    else
+        export last_branch=$branch;
+        export branch=$new_branch;
+    fi
 }
 
 function prompt_branch {
     parse_git_branch
-    if [ $branch ]; then
+    if [ "$branch" != "" ]; then
         export prompt_branch="[$branch]";
     else
         export prompt_branch="";

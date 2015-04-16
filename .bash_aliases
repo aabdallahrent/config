@@ -2,6 +2,7 @@
 
 alias cds="cd ~/source"
 alias cdr="cd ~/source/rent"
+alias cdrs="cd ~/source/rent_search"
 alias cdi="cd ~/source/idg"
 alias cda="cd ~/source/ag"
 alias cdm="cd ~/source/metasaurus"
